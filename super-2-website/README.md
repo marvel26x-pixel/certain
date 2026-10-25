@@ -1,55 +1,84 @@
-# Certain biscuits Website
+<div align="center">
 
-A responsive Certain biscuits brand website with a small Express backend for product data and retailer/customer enquiries. Brand-specific product facts, official assets, contact destinations, and company story have intentionally not been invented.
+# CERTAIN BISCUITS
 
-## Run locally
+### A bright little home for the biscuit break.
 
-Requirements: Node.js 20 or newer and npm.
+Brand website · Product catalogue · Retail and distributor enquiries
+
+<br>
+
+![Node.js](https://img.shields.io/badge/Node.js-20%2B-31725e?style=flat-square&logo=nodedotjs&logoColor=white)
+![Express](https://img.shields.io/badge/Express-API-152b2a?style=flat-square&logo=express&logoColor=white)
+![Status](https://img.shields.io/badge/status-in%20progress-e5533e?style=flat-square)
+
+</div>
+
+---
+
+> **Brand note:** Biscuit names, pack illustrations, and category details in the catalogue are fictional placeholders. Replace them with brand-approved assets and facts before launch.
+
+## What’s inside
+
+| Page or route | What it does |
+| --- | --- |
+| `/` | Brand homepage, story, FAQs, and contact form |
+| `/catalogue` | Filterable biscuit catalogue with sample products |
+| `/privacy.html` | Draft privacy notice for enquiry submissions |
+| `GET /api/products` | Returns catalogue data from `data/products.json` |
+| `POST /api/contact` | Validates and sends enquiries through configured SMTP |
+
+The frontend is responsive HTML, CSS, and JavaScript. Express serves the pages and API from one Node.js app.
+
+## Run it locally
+
+**You’ll need:** Node.js 20 or newer and npm.
 
 ```powershell
+cd path\to\super-2-website
 npm install
 Copy-Item .env.example .env
 npm run dev
 ```
 
-Open `http://localhost:3000` for the home page or `http://localhost:3000/catalogue` for the standalone biscuit catalogue. The site and API are served by the same Express process.
+Open [http://localhost:3000](http://localhost:3000). The biscuit catalogue is at [http://localhost:3000/catalogue](http://localhost:3000/catalogue).
 
-## Publish with GitHub and Render
+The site itself works without email settings. Contact submissions will show a configuration message until SMTP is set up.
 
-GitHub stores the project code. Render runs the Express server, so the product API and contact endpoint work online too. GitHub Pages alone cannot run this backend.
+## Make the catalogue yours
 
-### 1. Install GitHub Desktop
+Edit `data/products.json`. Each product can include these filter fields:
 
-Install GitHub Desktop from [desktop.github.com](https://desktop.github.com/) and sign in with your GitHub account. GitHub Desktop includes Git, so you do not need to install Git separately.
+```json
+{
+  "id": "sample-01",
+  "name": "Approved biscuit name",
+  "description": "Brand-approved description.",
+  "type": "Plain biscuit",
+  "flavour": "Original",
+  "texture": "Crisp",
+  "occasion": "Tea break",
+  "palette": "coral"
+}
+```
 
-### 2. Create a GitHub repository
+Supported sample pack palettes: `coral`, `yellow`, `blue`, and `green`. Add approved, optimized product imagery under `public/images/products/` when it’s ready. Don’t infer ingredients, allergens, nutrition, or product claims.
 
-1. In GitHub Desktop, choose **File > Add local repository**.
-2. Select this project folder: `C:\Users\Glitch\Documents\Dev\super-2-website`.
-3. If prompted that it is not a repository, choose the option to create a repository here. Keep the project folder as the local path.
-4. Name it `super-2-website`. Choose **Private** while the brand content and contact settings are still being prepared.
-5. Create the repository, then choose **Publish repository** and keep **Keep this code private** selected.
+## Put it online
 
-The `.gitignore` keeps `node_modules` and `.env` out of Git. Never upload SMTP passwords, private credentials, or real enquiry data.
+GitHub keeps the project code. Render runs the Express backend; **GitHub Pages alone can’t run this app’s server or contact API**.
 
-### 3. Deploy from the GitHub repository
+1. Install [GitHub Desktop](https://desktop.github.com/) and sign in.
+2. Choose **File → Add local repository** and select this project folder. If it isn’t a repository yet, create one there.
+3. Publish it to GitHub. Keeping it **Private** is sensible while content and contact settings are being prepared.
+4. Create an account at [Render](https://render.com/), choose **New → Blueprint**, connect the GitHub repository, and deploy. Render uses the included `render.yaml`.
+5. Open the Render URL when deployment finishes. A push to the connected GitHub repository starts a new deployment.
 
-1. Create/sign in to an account at [render.com](https://render.com/).
-2. In Render, choose **New > Blueprint** and connect your GitHub account.
-3. Select the `super-2-website` repository. Render reads `render.yaml`, installs dependencies, and starts the Express server.
-4. When deployment finishes, open the `onrender.com` URL Render provides. The home page is `/`, and the biscuit catalogue is `/catalogue`.
+The `.gitignore` excludes `.env` and `node_modules`. Never commit credentials, private enquiry data, or SMTP passwords.
 
-The included `render.yaml` is the deployment configuration. A push to the connected GitHub repository triggers a new deployment.
+## Enable enquiry delivery
 
-### 4. Configure enquiry email before launch
-
-In the Render service, open **Environment** and add the SMTP settings listed in the local `.env.example` file as environment variables. Use credentials for an approved sending account, and add them only in Render's private Environment settings, never in GitHub. The form intentionally reports that delivery is unavailable until all required mail settings are configured.
-
-Before making the site public, replace sample products with approved content, complete the privacy notice, and test a real enquiry end to end. Free hosting availability and limits can change; review the host's current plan details before relying on it for production.
-
-## Enquiry email setup
-
-Set these values in `.env` using an approved SMTP account. Do not commit `.env` or put credentials in client-side files.
+For local testing, add these values to `.env`. On Render, add them under the service’s private **Environment** settings instead. Use an approved sending account; keep secrets out of browser code and GitHub.
 
 ```env
 CONTACT_TO=approved-inbox@example.com
@@ -61,35 +90,22 @@ SMTP_PASS=your-smtp-password
 SMTP_FROM=website@example.com
 ```
 
-The contact endpoint validates and bounds submitted fields, requires an email or phone number, requires a business name for trade enquiries, applies per-IP rate limiting, and uses a hidden honeypot field. With no SMTP configuration, it returns a clear service-unavailable response rather than claiming an enquiry was delivered.
-
-## Product content
-
-Add approved products to `data/products.json`:
-
-```json
-[
-  {
-    "name": "Approved product name",
-    "description": "Approved short description",
-    "image": "/images/products/approved-pack.webp",
-    "imageAlt": "Approved product name package"
-  }
-]
-```
-
-Only publish product data and imagery supplied or approved by the brand. Place optimized pack images under `public/images/products/`.
+The endpoint validates input, requires an email address or phone number, requires a business name for trade enquiries, rate-limits submissions, and uses a honeypot field. It returns an error if email delivery isn’t configured or fails.
 
 ## Before launch
 
-- Replace the illustrative hero art with official approved logo and product photography.
-- Confirm all copy, product names, product imagery, company details, and contact destinations.
-- Have the privacy notice completed with the approved controller details, retention period, and applicable legal review.
-- Configure HTTPS and trusted proxy settings/rate limiting for the production host.
-- Add the approved analytics provider only after consent and privacy requirements are settled.
-- Verify accessibility, mobile layouts, links, email delivery, and browser support before publication.
+- Replace placeholder biscuit names, artwork, and copy with approved brand material.
+- Confirm official contact details, company information, and social links.
+- Complete the privacy notice with the approved data controller and retention details.
+- Configure SMTP and test a real enquiry from the live site.
+- Review accessibility, mobile layouts, HTTPS, analytics consent, and hosting limits.
 
-## API
+## Project map
 
-- `GET /api/products` returns the structured product list.
-- `POST /api/contact` accepts `name`, `email`, `phone`, `type`, `business`, `location`, `message`, and the honeypot `website` field.
+```text
+public/          Website pages, styles, scripts, and favicon
+data/            Structured biscuit catalogue
+server.js         Express server and enquiry API
+render.yaml       Render deployment blueprint
+.env.example      Local configuration template
+```
