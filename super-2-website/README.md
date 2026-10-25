@@ -64,21 +64,22 @@ Edit `data/products.json`. Each product can include these filter fields:
 
 Supported sample pack palettes: `coral`, `yellow`, `blue`, and `green`. Add approved, optimized product imagery under `public/images/products/` when it’s ready. Don’t infer ingredients, allergens, nutrition, or product claims.
 
-## Put it online
+## Publish with GitHub Pages
 
-GitHub keeps the project code. Render runs the Express backend; **GitHub Pages alone can’t run this app’s server or contact API**.
+The workflow at the repository root (`.github/workflows/deploy-pages.yml`) builds this site from the `super-2-website/` folder and publishes it when you push to `main`. It prepares the `/certain/` project-site path automatically.
 
-1. Install [GitHub Desktop](https://desktop.github.com/) and sign in.
-2. Choose **File → Add local repository** and select this project folder. If it isn’t a repository yet, create one there.
-3. Publish it to GitHub. Keeping it **Private** is sensible while content and contact settings are being prepared.
-4. Create an account at [Render](https://render.com/), choose **New → Blueprint**, connect the GitHub repository, and deploy. Render uses the included `render.yaml`.
-5. Open the Render URL when deployment finishes. A push to the connected GitHub repository starts a new deployment.
+1. Push or merge these changes to the `main` branch of the connected `marvel26x-pixel/certain` repository.
+2. On GitHub, open **Settings → Pages** and set the build and deployment source to **GitHub Actions**.
+3. Open the repository’s **Actions** tab and wait for **Deploy to GitHub Pages** to finish successfully.
+4. Visit `https://marvel26x-pixel.github.io/certain/`. The catalogue is at `/certain/catalogue/`.
 
-The `.gitignore` excludes `.env` and `node_modules`. Never commit credentials, private enquiry data, or SMTP passwords.
+GitHub Pages serves static files only. The product catalogue works from its JSON file, but **the Express contact API and email sending do not run on Pages**. The deployed form is clearly disabled until a separate backend or approved form provider is connected. Do not remove that notice unless contact delivery has been tested.
+
+The `.gitignore` excludes `.env`, `node_modules`, and the generated `dist` folder. Never commit credentials, private enquiry data, or SMTP passwords. GitHub Pages visibility depends on your repository and plan settings; confirm repository visibility requirements in GitHub before enabling the site.
 
 ## Enable enquiry delivery
 
-For local testing, add these values to `.env`. On Render, add them under the service’s private **Environment** settings instead. Use an approved sending account; keep secrets out of browser code and GitHub.
+For local testing, add these values to `.env`. If you later deploy the Express backend on Render, add them under the service’s private **Environment** settings. GitHub Pages cannot store or use these server-side SMTP secrets.
 
 ```env
 CONTACT_TO=approved-inbox@example.com

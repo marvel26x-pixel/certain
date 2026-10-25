@@ -25,6 +25,15 @@ const status = document.querySelector('#form-status');
 const typeField = form.elements.type;
 const businessField = form.querySelector('.business-field');
 const businessInput = form.elements.business;
+const submitButton = form.querySelector('button[type="submit"]');
+const githubPages = window.GITHUB_PAGES === true;
+
+if (githubPages) {
+  status.textContent = 'Enquiry delivery is not connected on this static GitHub Pages site yet.';
+  status.dataset.state = 'error';
+  form.querySelector('.form-submit p').textContent = 'This static GitHub Pages version cannot send enquiries. A separate backend or approved form service must be connected.';
+  submitButton.disabled = true;
+}
 
 function updateBusinessField() {
   const isTrade = ['Retailer', 'Distributor'].includes(typeField.value);
@@ -36,6 +45,7 @@ typeField.addEventListener('change', updateBusinessField);
 
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
+  if (githubPages) return;
   status.textContent = '';
   status.dataset.state = '';
 
@@ -50,7 +60,6 @@ form.addEventListener('submit', async (event) => {
   }
   if (!form.reportValidity()) return;
 
-  const submitButton = form.querySelector('button[type="submit"]');
   submitButton.disabled = true;
   submitButton.textContent = 'Sending…';
 

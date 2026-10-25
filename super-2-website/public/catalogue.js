@@ -61,7 +61,9 @@ function renderProducts(products) {
 
 async function loadProducts() {
   try {
-    const response = await fetch('/api/products');
+    const response = window.GITHUB_PAGES
+      ? await fetch(`${window.SITE_BASE_PATH}data/products.json`)
+      : await fetch('/api/products');
     if (!response.ok) throw new Error('Product catalogue is unavailable.');
     const products = await response.json();
     if (!Array.isArray(products)) throw new Error('Invalid product catalogue.');
