@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: super-2-website
+    runtime: node
+    plan: free
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /

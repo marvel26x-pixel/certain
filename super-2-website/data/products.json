@@ -1,0 +1,82 @@
+[
+	{
+		"id": "sample-01",
+		"name": "Classic Round",
+		"description": "Sample biscuit concept for layout testing.",
+		"type": "Plain biscuit",
+		"flavour": "Original",
+		"texture": "Crisp",
+		"occasion": "Tea break",
+		"palette": "coral"
+	},
+	{
+		"id": "sample-02",
+		"name": "Cocoa Sandwich",
+		"description": "Sample biscuit concept for layout testing.",
+		"type": "Sandwich biscuit",
+		"flavour": "Cocoa",
+		"texture": "Cream-filled",
+		"occasion": "Sharing",
+		"palette": "yellow"
+	},
+	{
+		"id": "sample-03",
+		"name": "Golden Cream",
+		"description": "Sample biscuit concept for layout testing.",
+		"type": "Cream biscuit",
+		"flavour": "Vanilla",
+		"texture": "Cream-filled",
+		"occasion": "Tea break",
+		"palette": "blue"
+	},
+	{
+		"id": "sample-04",
+		"name": "Coconut Snap",
+		"description": "Sample biscuit concept for layout testing.",
+		"type": "Plain biscuit",
+		"flavour": "Coconut",
+		"texture": "Crunchy",
+		"occasion": "On the go",
+		"palette": "green"
+	},
+	{
+		"id": "sample-05",
+		"name": "Lemon Cream",
+		"description": "Sample biscuit concept for layout testing.",
+		"type": "Cream biscuit",
+		"flavour": "Lemon",
+		"texture": "Cream-filled",
+		"occasion": "Sharing",
+		"palette": "yellow"
+	},
+	{
+		"id": "sample-06",
+		"name": "Choco Chip",
+		"description": "Sample biscuit concept for layout testing.",
+		"type": "Cookie",
+		"flavour": "Chocolate",
+		"texture": "Crunchy",
+		"occasion": "On the go",
+		"palette": "coral"
+	},
+	{
+		"id": "sample-07",
+		"name": "Spice Bites",
+		"description": "Sample biscuit concept for layout testing.",
+		"type": "Plain biscuit",
+		"flavour": "Spiced",
+		"texture": "Crisp",
+		"occasion": "Tea break",
+		"palette": "green"
+	},
+	{
+		"id": "sample-08",
+		"name": "Berry Swirl",
+		"description": "Sample biscuit concept for layout testing.",
+		"type": "Sandwich biscuit",
+		"flavour": "Berry",
+		"texture": "Cream-filled",
+		"occasion": "Sharing",
+		"palette": "blue"
+	}
+]

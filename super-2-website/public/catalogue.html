@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f4c62f">
+    <meta name="description" content="Browse the sample Certain biscuits catalogue and filter by type, flavour, texture, or occasion.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Our Biscuits | Certain biscuits">
+    <meta property="og:description" content="Browse the sample Certain biscuits catalogue and filter the range.">
+    <title>Our Biscuits | Certain biscuits</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+    <script src="/catalogue.js" defer></script>
+  </head>
+  <body class="catalogue-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <a class="wordmark" href="/" aria-label="Certain biscuits home"><span>CERTAIN</span><b>BISCUITS</b></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open navigation"><span></span><span></span></button>
+      <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
+        <a class="active" href="/catalogue" aria-current="page">Our biscuits</a>
+        <a href="/#about">About us</a>
+        <a href="/#faq">FAQs</a>
+        <a class="nav-cta" href="/#contact">Get in touch <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="catalogue-hero" aria-labelledby="catalogue-title">
+        <div class="catalogue-hero-copy">
+          <a class="back-link" href="/">← Back to home</a>
+          <p class="eyebrow"><span class="eyebrow-dot"></span> THE CERTAIN BISCUITS LINE-UP</p>
+          <h1 id="catalogue-title">Find your<br><span>kind of</span> biscuit.</h1>
+          <p>Eight sample concepts to explore. Mix the filters and see what fits your break.</p>
+        </div>
+        <div class="catalogue-hero-art" aria-hidden="true">
+          <span class="catalogue-art-note">A GOOD<br>BREAK<br>STARTS HERE</span>
+          <span class="orbit orbit-one"></span><span class="orbit orbit-two"></span>
+          <span class="hero-cookie cookie-a"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+          <span class="hero-cookie cookie-b"><i></i><i></i><i></i><i></i><i></i></span>
+          <span class="hero-cookie cookie-c"><i></i><i></i><i></i><i></i></span>
+          <span class="hero-art-star">✳</span>
+        </div>
+        <div class="catalogue-hero-foot"><span>01 — EXPLORE THE RANGE</span><span>PLACEHOLDER COLLECTION / 2026</span></div>
+      </section>
+
+      <section class="products catalogue-products section-pad" aria-labelledby="products-title">
+        <div class="section-heading">
+          <div><p class="eyebrow">THE SAMPLE COLLECTION</p><h2 id="products-title">Pick your<br>perfect break.</h2></div>
+          <p class="section-intro">Use the filters to find a biscuit by type, flavour, texture, or occasion. All products shown are fictional placeholders.</p>
+        </div>
+        <div class="catalogue-filters" aria-label="Filter sample biscuits">
+          <label>By type<select id="filter-type"><option value="">All types</option></select></label>
+          <label>By flavour<select id="filter-flavour"><option value="">All flavours</option></select></label>
+          <label>By texture<select id="filter-texture"><option value="">All textures</option></select></label>
+          <label>By occasion<select id="filter-occasion"><option value="">All occasions</option></select></label>
+        </div>
+        <div class="catalogue-toolbar"><p id="results-count" role="status" aria-live="polite">Loading sample biscuits…</p><button class="filter-reset" id="reset-filters" type="button">Clear filters <span aria-hidden="true">×</span></button></div>
+        <div class="product-grid" id="product-grid" aria-live="polite" aria-label="Sample biscuit products"><p class="catalogue-message">Loading sample biscuits…</p></div>
+        <div class="section-foot"><span>FICTIONAL PLACEHOLDERS — NOT AN APPROVED PRODUCT RANGE</span><span>END OF SAMPLE COLLECTION</span></div>
+      </section>
+
+      <section class="catalogue-cta"><p class="eyebrow">HAVE A QUESTION?</p><h2>Let’s talk biscuits.</h2><a class="button button-light" href="/#contact">Get in touch <span aria-hidden="true">↗</span></a></section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="wordmark footer-mark" href="/" aria-label="Certain biscuits home"><span>CERTAIN</span><b>BISCUITS</b></a>
+      <p>Official Certain biscuits brand information and product details will be added as they are approved.</p>
+      <div class="footer-links"><a href="/catalogue" aria-current="page">Our biscuits</a><a href="/#about">About us</a><a href="/#contact">Contact</a><a href="/privacy.html">Privacy notice</a></div>
+      <div class="footer-bottom"><span>© <span id="year"></span> CERTAIN BISCUITS</span><span>SAMPLE CATALOGUE / NOT FOR SALE</span><a href="#main">BACK TO TOP ↑</a></div>
+    </footer>
+  </body>
+</html>
